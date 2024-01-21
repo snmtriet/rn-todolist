@@ -8,6 +8,7 @@ interface Props {
 
 const SectionComponent = (props: Props) => {
   const {children} = props;
+
   return <View style={[globalStyles.section]}>{children}</View>;
 };
 

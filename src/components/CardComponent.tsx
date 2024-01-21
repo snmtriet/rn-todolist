@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {View, StyleProp, ViewStyle} from 'react-native';
 import React, {ReactNode} from 'react';
 import {globalStyles} from '../styles/globalStyles';
