@@ -6,8 +6,6 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bgColor,
-    padding: 0,
-    paddingTop: Platform.OS === 'ios' ? 52 : 42,
   },
 
   row: {
@@ -45,5 +43,15 @@ export const globalStyles = StyleSheet.create({
 
   card: {
     borderRadius: 12,
+  },
+
+  iconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
   },
 });

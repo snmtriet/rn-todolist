@@ -6,6 +6,9 @@ import TitleComponent from './TitleComponent';
 import CardComponent from './CardComponent';
 import SpaceComponent from './SpaceComponent';
 import CircularComponent from './CircularComponent';
+import CardImageComponent from './CardImageComponent';
+import AvatarGroupComponent from './AvatarGroupComponent';
+import ProgressBarComponent from './ProgressBarComponent';
 
 export {
   Container,
@@ -16,4 +19,7 @@ export {
   CardComponent,
   SpaceComponent,
   CircularComponent,
+  CardImageComponent,
+  AvatarGroupComponent,
+  ProgressBarComponent,
 };
