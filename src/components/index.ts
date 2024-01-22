@@ -9,6 +9,8 @@ import CircularComponent from './CircularComponent';
 import CardImageComponent from './CardImageComponent';
 import AvatarGroupComponent from './AvatarGroupComponent';
 import ProgressBarComponent from './ProgressBarComponent';
+import InputComponent from './InputComponent';
+import DateTimePickerComponent from './DateTimePickerComponent';
 
 export {
   Container,
@@ -22,4 +24,6 @@ export {
   CardImageComponent,
   AvatarGroupComponent,
   ProgressBarComponent,
+  InputComponent,
+  DateTimePickerComponent,
 };
