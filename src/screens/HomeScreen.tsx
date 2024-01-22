@@ -25,7 +25,7 @@ import {
 } from '../components';
 import {fontFamilies} from '../constants/fontFamilies';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   return (
     <View style={{flex: 1}}>
       <Container>
@@ -88,7 +88,7 @@ const HomeScreen = () => {
                   />
                 </View>
                 <TextComponent
-                  text="Due, 2023 Match 03"
+                  text="Due, 2023 March 03"
                   size={12}
                   color={colors.desc}
                 />
@@ -149,6 +149,7 @@ const HomeScreen = () => {
           alignItems: 'center',
         }}>
         <TouchableOpacity
+          onPress={() => navigation.navigate('AddTaskScreen')}
           activeOpacity={1}
           style={[
             globalStyles.row,
@@ -159,7 +160,11 @@ const HomeScreen = () => {
               width: '80%',
             },
           ]}>
-          <TextComponent text="Add new tasks" flex={0} />
+          <TextComponent
+            text="Add new tasks"
+            flex={0}
+            styles={{lineHeight: 19}}
+          />
           <Add size={22} color={colors.white} />
         </TouchableOpacity>
       </View>

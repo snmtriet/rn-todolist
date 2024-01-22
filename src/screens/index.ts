@@ -1,3 +1,4 @@
 import HomeScreen from './HomeScreen';
+import AddTaskScreen from './AddTaskScreen';
 
-export {HomeScreen};
+export {HomeScreen, AddTaskScreen};
