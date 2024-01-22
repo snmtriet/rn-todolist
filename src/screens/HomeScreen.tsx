@@ -24,8 +24,11 @@ import {
   ProgressBarComponent,
 } from '../components';
 import {fontFamilies} from '../constants/fontFamilies';
+import {useNavigation} from '@react-navigation/native';
+import {HomeScreenNavigationProp} from '../types';
 
-const HomeScreen = ({navigation}: any) => {
+const HomeScreen = () => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
   return (
     <View style={{flex: 1}}>
       <Container>
