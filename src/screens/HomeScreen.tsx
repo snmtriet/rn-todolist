@@ -11,6 +11,7 @@ import {colors} from '../constants/colors';
 import {globalStyles} from '../styles/globalStyles';
 import TagComponent from '../components/TagComponent';
 import SpaceComponent from '../components/SpaceComponent';
+import {CircularComponent} from '../components';
 
 const HomeScreen = () => {
   return (
@@ -42,13 +43,13 @@ const HomeScreen = () => {
               <SpaceComponent height={12} />
               <RowComponent justify="flex-start">
                 <TagComponent
-                  text="Match 22"
+                  text="March 22"
                   onPress={() => console.log('Say Hi!!!')}
                 />
               </RowComponent>
             </View>
             <View>
-              <TextComponent text="CircleChar" />
+              <CircularComponent value={80} color={colors.blue} />
             </View>
           </RowComponent>
         </CardComponent>

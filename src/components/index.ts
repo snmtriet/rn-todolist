@@ -5,6 +5,7 @@ import TextComponent from './TextComponent';
 import TitleComponent from './TitleComponent';
 import CardComponent from './CardComponent';
 import SpaceComponent from './SpaceComponent';
+import CircularComponent from './CircularComponent';
 
 export {
   Container,
@@ -14,4 +15,5 @@ export {
   TitleComponent,
   CardComponent,
   SpaceComponent,
+  CircularComponent,
 };

@@ -39,6 +39,8 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: Platform.OS === 'ios' ? 6 : 4,
     borderRadius: 100,
     backgroundColor: colors.blue,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   card: {
