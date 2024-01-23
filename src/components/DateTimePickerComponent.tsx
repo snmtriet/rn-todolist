@@ -1,4 +1,4 @@
-import {View, Modal, Button} from 'react-native';
+import {View, Modal, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import TitleComponent from './TitleComponent';
 import RowComponent from './RowComponent';
@@ -23,6 +23,11 @@ const DateTimePickerComponent = (props: Props) => {
   const [openModal, setOpenModal] = useState(false);
   const [date, setDate] = useState(selected ?? new Date());
 
+  const format = (value: number | undefined) => {
+    if (!value) return;
+    return value < 10 ? `0${value}` : value;
+  };
+
   const renderText = () => {
     const hours = selected?.getHours();
     const minutes = selected?.getMinutes();
@@ -31,8 +36,8 @@ const DateTimePickerComponent = (props: Props) => {
 
     return selected
       ? type === 'time'
-        ? `${hours}:${minutes}`
-        : `${selected.getDate()}/${month! + 1}/${year}`
+        ? `${format(hours)}:${format(minutes)}`
+        : `${format(selected.getDate())}/${format(month! + 1)}/${year}`
       : placeholder ?? '';
   };
 
@@ -80,16 +85,22 @@ const DateTimePickerComponent = (props: Props) => {
               />
             </View>
             <SpaceComponent height={20} />
-            <RowComponent justify="flex-end">
-              <Button title="Close" onPress={() => setOpenModal(false)} />
+            <RowComponent
+              justify="flex-end"
+              styles={{
+                height: 20,
+              }}>
+              <TouchableOpacity onPress={() => setOpenModal(false)}>
+                <TextComponent text="Close" color={colors.blue} />
+              </TouchableOpacity>
               <SpaceComponent width={10} />
-              <Button
-                title="Confirm"
+              <TouchableOpacity
                 onPress={() => {
                   onSelect(date);
                   setOpenModal(false);
-                }}
-              />
+                }}>
+                <TextComponent text="Confirm" color={colors.blue} />
+              </TouchableOpacity>
             </RowComponent>
           </View>
         </View>

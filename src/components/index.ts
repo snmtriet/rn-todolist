@@ -11,6 +11,7 @@ import AvatarGroupComponent from './AvatarGroupComponent';
 import ProgressBarComponent from './ProgressBarComponent';
 import InputComponent from './InputComponent';
 import DateTimePickerComponent from './DateTimePickerComponent';
+import ButtonComponent from './ButtonComponent';
 
 export {
   Container,
@@ -26,4 +27,5 @@ export {
   ProgressBarComponent,
   InputComponent,
   DateTimePickerComponent,
+  ButtonComponent,
 };

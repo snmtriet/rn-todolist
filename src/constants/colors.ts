@@ -6,4 +6,6 @@ export const colors = {
   desc: '#e6e6e6',
   blue: '#3168E0',
   white: '#fafafa',
+  error: '#E5252A',
+  success: '#12B57A',
 };

@@ -46,13 +46,19 @@ const InputComponent = (props: Props) => {
 
   return (
     <View style={{marginBottom: 16}}>
-      {title && <TitleComponent text={title} />}
+      {title && (
+        <TitleComponent
+          text={title}
+          flex={0}
+          size={Platform.OS === 'ios' ? 20 : 14}
+        />
+      )}
       <RowComponent
         styles={[
           globalStyles.inputContainer,
           {
-            marginTop: title ? 8 : 0,
-            minHeight: multiline && numberOfLine ? 32 * numberOfLine : 32,
+            marginTop: title ? 4 : 0,
+            minHeight: multiline && numberOfLine ? 32 * numberOfLine : 52,
             paddingVertical: Platform.OS === 'ios' ? 12 : 2,
             paddingHorizontal: 10,
             alignItems: 'center',

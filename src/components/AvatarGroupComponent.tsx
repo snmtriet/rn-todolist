@@ -33,7 +33,7 @@ const AvatarGroupComponent = () => {
           style={[
             imageStyle,
             {
-              backgroundColor: 'coral',
+              backgroundColor: colors.blue,
               justifyContent: 'center',
               alignItems: 'center',
               borderWidth: 1,

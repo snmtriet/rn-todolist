@@ -13,15 +13,16 @@ interface Props {
   back?: boolean;
   right?: ReactNode;
   children: ReactNode;
+  isScroll?: boolean;
 }
 
 const Container = (props: Props) => {
-  const {title, back, right, children} = props;
+  const {title, back, right, children, isScroll} = props;
 
   const navigation: any = useNavigation();
 
   return (
-    <View style={[globalStyles.container]}>
+    <View style={[globalStyles.container, {flex: 1}]}>
       {/* Header container */}
 
       <RowComponent
@@ -47,10 +48,13 @@ const Container = (props: Props) => {
             />
           )}
         </View>
-        {right && right}
+        {right && <TouchableOpacity>{right}</TouchableOpacity>}
       </RowComponent>
-
-      <ScrollView style={{flex: 1}}>{children}</ScrollView>
+      {isScroll ? (
+        <ScrollView style={{flex: 1, flexGrow: 1}}>{children}</ScrollView>
+      ) : (
+        <View style={{flex: 1}}>{children}</View>
+      )}
     </View>
   );
 };

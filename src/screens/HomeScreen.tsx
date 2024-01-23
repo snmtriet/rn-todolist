@@ -2,6 +2,7 @@ import {
   Add,
   Edit2,
   Element4,
+  LogoutCurve,
   Notification,
   SearchNormal1,
 } from 'iconsax-react-native';
@@ -26,12 +27,19 @@ import {
 import {fontFamilies} from '../constants/fontFamilies';
 import {useNavigation} from '@react-navigation/native';
 import {HomeScreenNavigationProp} from '../types';
+import auth from '@react-native-firebase/auth';
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
+  const user = auth().currentUser;
+
+  const handleLogout = async () => {
+    await auth().signOut();
+  };
+
   return (
     <View style={{flex: 1}}>
-      <Container>
+      <Container isScroll>
         <SectionComponent>
           <RowComponent justify="space-between">
             <Element4 size={24} color={colors.desc} />
@@ -39,8 +47,22 @@ const HomeScreen = () => {
           </RowComponent>
         </SectionComponent>
         <SectionComponent>
-          <TextComponent text="Hi, Jason" />
-          <TitleComponent text="Be Productive today" />
+          <RowComponent>
+            <View
+              style={{
+                flex: 1,
+              }}>
+              <RowComponent>
+                <TextComponent
+                  text={`Hi, ${user?.displayName || user?.email}`}
+                />
+                <TouchableOpacity onPress={handleLogout}>
+                  <LogoutCurve size={22} color={colors.error} />
+                </TouchableOpacity>
+              </RowComponent>
+              <TitleComponent text="Be Productive today" />
+            </View>
+          </RowComponent>
         </SectionComponent>
         <SectionComponent>
           <RowComponent
