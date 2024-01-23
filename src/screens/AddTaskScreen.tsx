@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  ButtonComponent,
   Container,
   DateTimePickerComponent,
   InputComponent,
@@ -8,7 +9,7 @@ import {
   SpaceComponent,
 } from '../components';
 import {Task} from '../types';
-import {Button, View} from 'react-native';
+import {View} from 'react-native';
 
 const initValue: Task = {
   title: '',
@@ -78,7 +79,7 @@ const AddTaskScreen = () => {
         </RowComponent>
       </SectionComponent>
       <SectionComponent>
-        <Button title="Save" onPress={handleAddNewTask} />
+        <ButtonComponent text="Save" onPress={handleAddNewTask} />
       </SectionComponent>
     </Container>
   );

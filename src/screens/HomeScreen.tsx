@@ -181,7 +181,7 @@ const HomeScreen = () => {
             {
               backgroundColor: colors.blue,
               padding: 10,
-              borderRadius: 100,
+              borderRadius: 12,
               width: '80%',
             },
           ]}>
