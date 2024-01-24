@@ -76,7 +76,11 @@ const AddTaskScreen = ({route, navigation}: AddTaskScreenProps) => {
       updatedAt: Date.now(),
     };
     try {
-      await firestore().collection('tasks').add(newData);
+      if (task) {
+        await firestore().collection('tasks').doc(task.id).update(newData);
+      } else {
+        await firestore().collection('tasks').add(newData);
+      }
       navigation.goBack();
     } catch (error) {
       console.log({error});
