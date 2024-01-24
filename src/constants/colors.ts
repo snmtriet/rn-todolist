@@ -7,5 +7,6 @@ export const colors = {
   blue: '#3168E0',
   white: '#fafafa',
   error: '#E5252A',
-  success: '#12B57A',
+  success: '#4BB543',
+  skeleton: '#292929',
 };

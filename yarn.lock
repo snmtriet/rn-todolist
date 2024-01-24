@@ -1511,6 +1511,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@miblanchard/react-native-slider@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@miblanchard/react-native-slider/-/react-native-slider-2.3.1.tgz#79e0f1f9b1ce43ef25ee51ee9256c012e5dfa412"
+  integrity sha512-J/hZDBWmXq8fJeOnTVHqIUVDHshqMSpJVxJ4WqwuCBKl5Rke9OBYXIdkSlgi75OgtScAr8FKK5KNkDKHUf6JIg==
+
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz#dbf733a965ca47b1973177dc0bb6c889edcfb129"
@@ -1711,11 +1716,6 @@
   version "18.7.3"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-18.7.3.tgz#b2b21288b1ea1cf470552fa11d39d9ffca32dc03"
   integrity sha512-ts5clqDnpXw2nnX7W9H9+AZbh0jyXNIjnhHfTnMpstpCDQ3DCld/d8Ta2n/jzLUGRhtkCd0iALXmvVQBNNOTSQ==
-
-"@react-native-firebase/storage@^18.7.3":
-  version "18.7.3"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-18.7.3.tgz#5fd232ed87fede0da3168c380c7921a547a6afbc"
-  integrity sha512-dRVhjN0xZrJWEJSyMMecqTHVuqopHKqttb7rNNfSjNivk02nn9c5zKGTBSP2Q00ouxzSCw66bocWJ0oBi8wl+g==
 
 "@react-native/assets-registry@0.73.1":
   version "0.73.1"

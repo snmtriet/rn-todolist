@@ -24,8 +24,8 @@ const DateTimePickerComponent = (props: Props) => {
   const [date, setDate] = useState(selected ?? new Date());
 
   const format = (value: number | undefined) => {
-    if (!value) return;
-    return value < 10 ? `0${value}` : value;
+    // eslint-disable-next-line curly
+    return value! < 10 ? `0${value}` : value;
   };
 
   const renderText = () => {

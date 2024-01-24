@@ -12,6 +12,7 @@ import ProgressBarComponent from './ProgressBarComponent';
 import InputComponent from './InputComponent';
 import DateTimePickerComponent from './DateTimePickerComponent';
 import ButtonComponent from './ButtonComponent';
+import DropdownPickerComponent from './DropdownPickerComponent';
 
 export {
   Container,
@@ -28,4 +29,5 @@ export {
   InputComponent,
   DateTimePickerComponent,
   ButtonComponent,
+  DropdownPickerComponent,
 };

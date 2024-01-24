@@ -1,15 +1,29 @@
-import React, {useState} from 'react';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {View} from 'react-native';
 import {
   ButtonComponent,
   Container,
   DateTimePickerComponent,
+  DropdownPickerComponent,
   InputComponent,
   RowComponent,
   SectionComponent,
   SpaceComponent,
 } from '../components';
 import {Task} from '../types';
-import {View} from 'react-native';
+import {getRandomImage} from '../utils';
+
+type SelectType = {
+  value: string;
+  label: {
+    displayName: string;
+    photoURL: string;
+    email: string;
+  };
+};
 
 const initValue: Task = {
   title: '',
@@ -18,22 +32,59 @@ const initValue: Task = {
   start: new Date(),
   end: new Date(),
   users: [],
-  fileUrls: [],
+  isUrgent: false,
 };
 
 const AddTaskScreen = () => {
   const [data, setData] = useState<Task>(initValue);
+  const [usersSelect, setUsersSelect] = useState<SelectType[]>([]);
+  const user = auth().currentUser;
 
-  const handleChangeValue = (id: string, value: string | Date) => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    handleGetAllUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleChangeValue = (id: string, value: string | Date | string[]) => {
     setData(prev => ({...prev, [id]: value}));
   };
 
   const handleAddNewTask = async () => {
-    console.log({data});
+    const newData: Task = {
+      ...data,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
+    try {
+      await firestore().collection('tasks').add(newData);
+      navigation.goBack();
+    } catch (error) {
+      console.log({error});
+    }
+  };
+
+  const handleGetAllUsers = async () => {
+    const snapshot = await firestore().collection('users').get();
+    const items: SelectType[] = [];
+    snapshot.forEach(item => {
+      items.push({
+        label: {
+          email: item.data().email,
+          displayName: item.data().displayName || 'Unnamed',
+          photoURL: item.data().photoURL || getRandomImage(),
+        },
+        value: item.id,
+      });
+    });
+    // remove me from list users
+    const itemsRemovedMe = items.filter(item => item.value !== user?.uid);
+    setUsersSelect(itemsRemovedMe);
   };
 
   return (
-    <Container back title="Add new task">
+    <Container isScroll back title="Add new task">
       <SectionComponent>
         <InputComponent
           value={data.title}
@@ -77,7 +128,16 @@ const AddTaskScreen = () => {
             />
           </View>
         </RowComponent>
+
+        <DropdownPickerComponent
+          selected={data.users}
+          items={usersSelect}
+          onSelect={val => handleChangeValue('users', val)}
+          title="Members"
+          multiple
+        />
       </SectionComponent>
+
       <SectionComponent>
         <ButtonComponent text="Save" onPress={handleAddNewTask} />
       </SectionComponent>

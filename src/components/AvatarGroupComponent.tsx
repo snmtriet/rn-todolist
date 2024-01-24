@@ -4,10 +4,14 @@ import {Image, View} from 'react-native';
 import TextComponent from './TextComponent';
 import {colors} from '../constants/colors';
 import {fontFamilies} from '../constants/fontFamilies';
+import {getRandomImage} from '../utils';
 
-const AvatarGroupComponent = () => {
-  const users = 10;
-  const imageUrl = 'https://avatars.githubusercontent.com/u/75319942?v=4';
+interface Props {
+  users: string[];
+}
+
+const AvatarGroupComponent = (props: Props) => {
+  const {users} = props;
   const imageStyle = {
     width: 32,
     height: 32,
@@ -17,18 +21,18 @@ const AvatarGroupComponent = () => {
   };
   return (
     <RowComponent styles={{justifyContent: 'flex-start'}}>
-      {Array.from({length: users}).map(
+      {Array.from({length: users.length}).map(
         (_, index) =>
           index < 3 && (
             <Image
-              source={{uri: imageUrl}}
+              source={{uri: getRandomImage()}}
               key={`image${index}`}
               style={[imageStyle, {marginLeft: index > 0 ? -10 : 0}]}
             />
           ),
       )}
 
-      {users > 5 && (
+      {users.length > 5 && (
         <View
           style={[
             imageStyle,
@@ -46,7 +50,7 @@ const AvatarGroupComponent = () => {
               lineHeight: 19,
             }}
             font={fontFamilies.semiBold}
-            text={`+${users - 3 > 9 ? 9 : users - 3}`}
+            text={`${users.length - 3 > 9 ? 9 : users.length - 3}+`}
           />
         </View>
       )}
