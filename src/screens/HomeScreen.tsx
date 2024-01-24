@@ -135,9 +135,19 @@ const HomeScreen = () => {
             <RowComponent styles={{alignItems: 'flex-start'}}>
               {tasks[0] && (
                 <View style={{flex: 1}}>
-                  <CardImageComponent>
+                  <CardImageComponent
+                    onPress={() =>
+                      navigation.navigate('TaskDetail', {
+                        id: tasks[0].id!,
+                        color: 'rgba(113, 77, 217, 0.9)',
+                      })
+                    }>
                     <TouchableOpacity
-                      onPress={() => {}}
+                      onPress={() => {
+                        navigation.navigate('AddTaskScreen', {
+                          task: tasks[0],
+                        });
+                      }}
                       style={globalStyles.iconContainer}>
                       <Edit2 size={20} color={colors.white} />
                     </TouchableOpacity>
@@ -150,7 +160,7 @@ const HomeScreen = () => {
                     <View style={{marginVertical: 28}}>
                       <AvatarGroupComponent users={tasks[0].users} />
                       <ProgressBarComponent
-                        percent="70%"
+                        percent={`${Math.floor(tasks[0].progress || 0 * 100)}%`}
                         color="#08ADFF"
                         size="large"
                       />
@@ -169,23 +179,50 @@ const HomeScreen = () => {
                   <SpaceComponent width={16} />
                   <View style={{flex: 1}}>
                     {tasks[1] && (
-                      <CardImageComponent color="rgba(33, 150, 243, 0.9)">
+                      <CardImageComponent
+                        onPress={() =>
+                          navigation.navigate('TaskDetail', {
+                            id: tasks[1].id!,
+                            color: 'rgba(33, 150, 243, 0.9)',
+                          })
+                        }
+                        color="rgba(33, 150, 243, 0.9)">
                         <TouchableOpacity
-                          onPress={() => {}}
+                          onPress={() => {
+                            navigation.navigate('AddTaskScreen', {
+                              task: tasks[1],
+                            });
+                          }}
                           style={globalStyles.iconContainer}>
                           <Edit2 size={20} color={colors.white} />
                         </TouchableOpacity>
                         <TitleComponent text={tasks[1].title} size={18} />
                         <AvatarGroupComponent users={tasks[1].users} />
-                        <ProgressBarComponent percent="40%" color="#A2EE69" />
+                        <ProgressBarComponent
+                          percent={`${Math.floor(
+                            tasks[1].progress || 0 * 100,
+                          )}%`}
+                          color="#A2EE69"
+                        />
                       </CardImageComponent>
                     )}
                     {tasks[2] && (
                       <>
                         <SpaceComponent height={16} />
-                        <CardImageComponent color="rgba(18, 181, 22, 0.9)">
+                        <CardImageComponent
+                          onPress={() =>
+                            navigation.navigate('TaskDetail', {
+                              id: tasks[2].id!,
+                              color: 'rgba(18, 181, 22, 0.9)',
+                            })
+                          }
+                          color="rgba(18, 181, 22, 0.9)">
                           <TouchableOpacity
-                            onPress={() => {}}
+                            onPress={() => {
+                              navigation.navigate('AddTaskScreen', {
+                                task: tasks[2],
+                              });
+                            }}
                             style={globalStyles.iconContainer}>
                             <Edit2 size={20} color={colors.white} />
                           </TouchableOpacity>

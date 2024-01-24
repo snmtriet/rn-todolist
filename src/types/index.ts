@@ -2,9 +2,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export type RootStackNavigatorParamList = {
   HomeScreen: undefined;
-  AddTaskScreen: undefined;
+  AddTaskScreen: {task?: Task} | undefined;
   LoginScreen: undefined;
   RegisterScreen: undefined;
+  TaskDetail: {id: string; color: string};
 };
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -21,6 +22,8 @@ export type RegisterScreenNavigationProp = NativeStackNavigationProp<
   RootStackNavigatorParamList,
   'LoginScreen'
 >;
+
+export type TimestampType = {nanoseconds: number; seconds: number};
 
 export interface Task {
   id?: string;

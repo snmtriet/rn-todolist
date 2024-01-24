@@ -5,6 +5,7 @@ import {
   HomeScreen,
   LoginScreen,
   RegisterScreen,
+  TaskDetail,
 } from '../screens';
 import {NavigationContainer} from '@react-navigation/native';
 import {RootStackNavigatorParamList} from '../types';
@@ -21,6 +22,7 @@ const Router = () => {
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="AddTaskScreen" component={AddTaskScreen} />
+      <Stack.Screen name="TaskDetail" component={TaskDetail} />
     </Stack.Navigator>
   );
 

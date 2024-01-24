@@ -54,4 +54,8 @@ export const globalStyles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
+
+  documentImg: {
+    marginHorizontal: 4,
+  },
 });

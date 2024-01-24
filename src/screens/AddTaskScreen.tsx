@@ -1,6 +1,5 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {
@@ -13,8 +12,9 @@ import {
   SectionComponent,
   SpaceComponent,
 } from '../components';
-import {Task} from '../types';
-import {getRandomImage} from '../utils';
+import {RootStackNavigatorParamList, Task} from '../types';
+import {getRandomImage, timestampToDate} from '../utils';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type SelectType = {
   value: string;
@@ -35,12 +35,27 @@ const initValue: Task = {
   isUrgent: false,
 };
 
-const AddTaskScreen = () => {
+type AddTaskScreenProps = NativeStackScreenProps<
+  RootStackNavigatorParamList,
+  'AddTaskScreen'
+>;
+
+const AddTaskScreen = ({route, navigation}: AddTaskScreenProps) => {
+  const {task} = route.params || {};
   const [data, setData] = useState<Task>(initValue);
   const [usersSelect, setUsersSelect] = useState<SelectType[]>([]);
   const user = auth().currentUser;
 
-  const navigation = useNavigation();
+  useEffect(() => {
+    if (task) {
+      setData({
+        ...task,
+        dueDate: timestampToDate(task.dueDate),
+        start: timestampToDate(task.start),
+        end: timestampToDate(task.end),
+      });
+    }
+  }, [task]);
 
   useEffect(() => {
     handleGetAllUsers();
@@ -54,6 +69,9 @@ const AddTaskScreen = () => {
   const handleAddNewTask = async () => {
     const newData: Task = {
       ...data,
+      dueDate: new Date(data.dueDate as Date),
+      start: new Date(data.start as Date),
+      end: new Date(data.end as Date),
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
@@ -139,7 +157,10 @@ const AddTaskScreen = () => {
       </SectionComponent>
 
       <SectionComponent>
-        <ButtonComponent text="Save" onPress={handleAddNewTask} />
+        <ButtonComponent
+          text={task ? 'Update' : 'Create'}
+          onPress={handleAddNewTask}
+        />
       </SectionComponent>
     </Container>
   );
